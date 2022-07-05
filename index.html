@@ -1,0 +1,81 @@
+<!-- design beautiful page-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>wikiFWD</title>
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="title" content="WikiFWD">
+<meta name="description" content="A simple node app to prevent Wikipedia censorship">
+<meta name="keywords" content="wikipedia, node">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="MoPaMo">
+  </head>
+
+  <body>
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>wikiFWD</h1>
+            <h2>
+              A simple <a href="/wiki/nodeJS">node</a> app to prevent Wikipedia
+              <a href="/wiki/censorship">censorship</a>
+            </h2>
+          </hgroup>
+          <form>
+            <input
+              type="search"
+              name="search"
+              placeholder="List of sexually active popes"
+              aria-label="search"
+              required="true"
+            />
+
+            <button type="submit" class="contrast" onclick="s(event)">
+              Search
+            </button>
+          </form>
+          <div style="text-align: center">
+            <small
+              ><a class="secondary" href="https://glitch.com/edit/#!/wikifwd"
+                >source code</a
+              >
+              ᐧ
+              <a
+                class="secondary"
+                onclick="w(event)"
+                href="mailto:?subject=wikiFWD&body=Hey%2C%20check%20out%20wikiFWD%2C%20the%20cool%20new%20tool%20to%20avoid%20Wikipedia%20censorship!%0Ahttps%3A%2F%2Fwikifwd.glitch.me"
+                >sharing is caring</a
+              ></small
+            >
+          </div>
+        </div>
+      </article>
+    </main>
+    <script>
+      function s(event) {
+        event.preventDefault();
+        open("/wiki/" + (document.querySelector("input[name=search]").value).replaceAll(" ", "_"),
+          "_SELF");
+      }
+      function w(e) {
+        if (navigator.share) {
+          e.preventDefault();
+          navigator
+            .share({
+              title: "wikiFWD",
+              text: "A simple node app to prevent Wikipedia censorship",
+              url: "https://wikifwd.glitch.me",
+            })
+            .then(() => console.log("Successful share"))
+            .catch((error) => console.log("Error sharing", error));
+        }
+      }
+    </script>
+  </body>
+</html>
+
